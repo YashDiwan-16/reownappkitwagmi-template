@@ -6,6 +6,8 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 import Link from "next/link";
 import ModeToggle from "./darkmode";
+// import { ConnectButton } from "../ConnectButton";
+import { ActionButtonList } from "../ActionButtonList";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,6 +27,7 @@ const Navbar = () => {
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
+          className="hidden md:block"
         >
           <Link href="/" className="text-xl font-bold">
             Logo
@@ -50,19 +53,22 @@ const Navbar = () => {
           ))}
           {/* Add ModeToggle Here */}
           <ModeToggle />
+
+          {/* <ConnectButton /> */}
+          <ActionButtonList />
         </div>
 
         {/* Mobile Navigation */}
-        <div className="md:hidden flex items-center">
+        <div className="md:hidden flex items-center justify-between w-full">
           {/* ModeToggle for Mobile */}
-          <ModeToggle />
+
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
               <button className="p-2">
                 <Menu className="h-6 w-6" />
               </button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[240px] sm:w-[300px]">
+            <SheetContent side="left" className="w-[240px] sm:w-[300px]">
               <div className="flex flex-col space-y-4 mt-8">
                 {navItems.map((item, index) => (
                   <motion.div
@@ -83,6 +89,10 @@ const Navbar = () => {
               </div>
             </SheetContent>
           </Sheet>
+          <div className="flex items-center space-x-4">
+            <ModeToggle />
+            <ActionButtonList />
+          </div>
         </div>
       </div>
     </nav>

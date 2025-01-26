@@ -1,7 +1,32 @@
-import Image from "next/image";
+// import { cookieStorage, createStorage, http } from '@wagmi/core'
+import { ConnectButton } from "@/components/ConnectButton";
+import { InfoList } from "@/components/InfoList";
+import { ActionButtonList } from "@/components/ActionButtonList";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]"></div>
+    <div className={"pages"}>
+      {/* <Image src="/reown.svg" alt="Reown" width={150} height={150} priority /> */}
+      <h1>AppKit Wagmi Next.js App Router Example</h1>
+      {/* 
+      <ConnectButton />
+      <ActionButtonList /> */}
+      <div className="advice">
+        <p>
+          This projectId only works on localhost. <br />
+          Go to{" "}
+          <a
+            href="https://cloud.reown.com"
+            target="_blank"
+            className="link-button"
+            rel="Reown Cloud"
+          >
+            Reown Cloud
+          </a>{" "}
+          to get your own.
+        </p>
+      </div>
+      <InfoList />
+    </div>
   );
 }
